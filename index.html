@@ -4,51 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💖 JAINUDIN AND JAINAP In Luv 💖</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<button onclick="document.getElementById('bucinMusic').play()">💖 Mainkan Musik Cinta</button>
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" onclick="document.getElementById('bucinMusic').play()">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
 
-<audio id="bucinMusic" loop>
-  <source src="Romantic-Day-chosic.com_.mp3" type="audio/mpeg">
-  Browser kamu tidak mendukung pemutar audio.
-</audio>
+    <audio id="bucinMusic" loop>
+        <source src="Romantic-Day-chosic.com_.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung pemutar audio.
+    </audio>
+
     <canvas id="falling-hearts-canvas"></canvas>
 
     <header class="main-header">
-        <h1 class="glowing-text">Our Love Story ✨</h1>
-        <p class="blinking-text">~*~ JAINUDIN & JAINAP Selamanya ~*~</p>
+        <div class="container">
+            <h1 class="glowing-text">Our Love Story ✨</h1>
+            <p class="blinking-text">~*~ JAINUDIN & JAINAP Selamanya ~*~</p>
+        </div>
     </header>
 
-    <main>
+    <main class="container">
         <section id="gallery">
             <h2 class="section-title">Kenangan Manis Kita 📸💕</h2>
             <div class="gallery-container">
                 <div class="gallery-item">
-                    <img src="images/Foto1.jpg" alt="Foto romantis 1">
+                    <img src="images/Foto1.jpg" alt="Foto romantis 1" loading="lazy">
                     <p class="caption">Pertama kali jalan berdua~ 😳</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/Foto2.jpg" alt="Foto romantis 2">
+                    <img src="images/Foto2.jpg" alt="Foto romantis 2" loading="lazy">
                     <p class="caption">Makan Ular Di Depan Rumah 🐍</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/Foto3.jpg" alt="Foto romantis 3">
+                    <img src="images/Foto3.jpg" alt="Foto romantis 3" loading="lazy">
                     <p class="caption">Acara Event Cosplay Anomali >.<</p>
                 </div>
-                 <div class="gallery-item">
-                    <img src="images/Foto4.jpg" alt="Foto romantis 4">
+                <div class="gallery-item">
+                    <img src="images/Foto4.jpg" alt="Foto romantis 4" loading="lazy">
                     <p class="caption">Ini Foto Anak Orang ❤️</p>
                 </div>
-                 <div class="gallery-item">
-                    <img src="images/Foto5.jpg" alt="Foto romantis 5">
+                <div class="gallery-item">
+                    <img src="images/Foto5.jpg" alt="Foto romantis 5" loading="lazy">
                     <p class="caption">Nikahan Kita yang Romantis wkwk</p>
                 </div>
-                 <div class="gallery-item">
-                    <img src="images/Foto6.jpg" alt="Foto romantis 6">
+                <div class="gallery-item">
+                    <img src="images/Foto6.jpg" alt="Foto romantis 6" loading="lazy">
                     <p class="caption">Sayang kamu selamanyaaa...</p>
                 </div>
             </div>
@@ -59,11 +68,14 @@
             <form id="guestbook-form">
                 <input type="text" id="guest-name" placeholder="Nama Kamoeh..." required>
                 <textarea id="guest-message" placeholder="Tulis pesanmu di sini, Czayank..." required></textarea>
-                <button type="submit" class="glowing-button">Kirim Pesan!</button>
+                <button type="submit" class="glowing-button">
+                    <i class="fas fa-paper-plane"></i> Kirim Pesan!
+                </button>
             </form>
             <div id="guestbook-entries">
                 <h3 class="blinking-text">~~ Pesan Dari Sahabat ~~</h3>
-                </div>
+                <!-- Entries will be loaded here -->
+            </div>
         </section>
     </main>
 
@@ -72,78 +84,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // Script untuk Guestbook (Buku Tamu)
-        $('#guestbook-form').on('submit', function(e) {
-            e.preventDefault();
-            const name = $('#guest-name').val();
-            const message = $('#guest-message').val();
-            
-            const entry = `
-                <div class="guestbook-entry">
-                    <h4>${name} bilang:</h4>
-                    <p>"${message}"</p>
-                </div>
-            `;
-            
-            $('#guestbook-entries').append(entry);
-            
-            // Kosongkan form
-            $('#guest-name').val('');
-            $('#guest-message').val('');
-        });
-
-        // Script untuk Animasi Hati Jatuh
-        const canvas = document.getElementById('falling-hearts-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let hearts = [];
-        const heartImg = new Image();
-        heartImg.src = 'https://emojicdn.elk.sh/💖'; // Menggunakan emoji sebagai gambar
-
-        function createHeart() {
-            hearts.push({
-                x: Math.random() * canvas.width,
-                y: -50,
-                size: Math.random() * 20 + 20,
-                speed: Math.random() * 3 + 1
-            });
-        }
-
-        function drawHearts() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < hearts.length; i++) {
-                ctx.drawImage(heartImg, hearts[i].x, hearts[i].y, hearts[i].size, hearts[i].size);
-            }
-        }
-
-        function updateHearts() {
-            for (let i = 0; i < hearts.length; i++) {
-                hearts[i].y += hearts[i].speed;
-                if (hearts[i].y > canvas.height) {
-                    hearts.splice(i, 1);
-                    i--;
-                }
-            }
-        }
-
-        function gameLoop() {
-            if (Math.random() < 0.1) { // Menambah hati baru secara acak
-                createHeart();
-            }
-            updateHearts();
-            drawHearts();
-            requestAnimationFrame(gameLoop);
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        gameLoop();
+    <script type="module" src="main.js">   
     </script>
 </body>
 </html>
