@@ -139,8 +139,8 @@
         }
         
         .gallery-item:hover {
-            transform: translateY(-5px) rotate(1deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         }
         
         .gallery-item img {
@@ -149,7 +149,7 @@
             object-fit: cover;
             border-radius: 10px;
             display: block;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .gallery-item:hover img {
@@ -175,6 +175,28 @@
             max-width: 800px;
             padding: 30px;
         }
+
+.entry-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.like-btn {
+    background: transparent;
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.like-btn:hover {
+    background: var(--pink);
+    color: var(--white);
+}
         
         #guestbook-form {
             display: flex;
